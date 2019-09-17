@@ -1,0 +1,61 @@
+.page-info .btn {
+    width: 100%;
+}
+
+.center {
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+}
+
+.icon {
+    font-size: 3em;
+}
+
+.page {
+    color: royalblue;
+}
+
+.side-crop { max-width: 60%; overflow: hidden;}
+.side-crop img { max-width: initial; /* Maybe optional. See note below */ }
+.right-crop { direction: rtl;}
+.margin-left { margin-left: 15%;}
+.margin-right {margin-right: 15%;}
+
+.panel {
+    position: fixed;
+    top: 52px;
+    background: rgba(255, 255, 255, .8);
+    padding: 0px 26px;
+    height: 100%;
+    cursor: pointer;
+}
+
+.panel:hover {
+    background: rgb(231, 197, 146);
+}
+
+.left-side {
+    left: 0;
+}
+
+.right-side {
+    right: 0;
+}
+
+.vertical-text {
+    color: #4b13d8;
+    font-family: 'Bungee Shade', cursive;
+    -webkit-writing-mode: vertical-lr;
+    -ms-writing-mode: tb-lr;
+    writing-mode: vertical-lr;
+    text-orientation: upright;
+    -webkit-font-feature-settings: "vkrn", "vpal";
+    font-feature-settings: "vkrn", "vpal";
+    font-size: 2em;
+    text-align: center;
+  }
+
+.img {
+    position:absolute;
+}
