@@ -11,6 +11,14 @@ if ($page < 10) {
 	$page = '0' . $page;
 }
 
+$header = null;
+if ($page > 0) {
+	$header = 'Đang hiển thị trang <span class="page">'.$page.'</span>';
+} else {
+	$header = 'Không tìm thấy trang';
+}
+								
+
 ?>
 
 <!DOCTYPE html>
@@ -26,8 +34,8 @@ if ($page < 10) {
 	<link href="https://fonts.googleapis.com/css?family=Bungee+Shade&display=swap" rel="stylesheet">
 	<script src="jquery-3.4.1.min.js"></script>
 	<script src="scripts.js"></script>
-	
-	
+
+
 </head>
 
 <body>
@@ -70,16 +78,15 @@ if ($page < 10) {
 		</div>
 	</nav>
 
+	<?php if ($page > 0) { ?>
 	<div class="main">
 		<div class="page-info">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-6">
 						<div class="center">
-							<h2>Đang hiển thị trang
-								<span class="page">
-									<?php echo $page ?>
-								</span>
+							<h2>
+								<?php echo $header; ?>
 							</h2>
 						</div>
 					</div>
@@ -105,8 +112,7 @@ if ($page < 10) {
 
 		<div class="img full-image">
 			<img class="img-responsive center" src="http://vietnamtudien.org/chunom-trichdan/tr<?php echo $page ?>.png"
-			 alt="Từ điển chữ Nôm trích dẫn trang
-		<?php echo $page ?>" />
+			 alt="Từ điển chữ Nôm trích dẫn trang <?php echo $page ?>" />
 		</div>
 
 		<div class="panel left-side vertical-text">LEFT</div>
@@ -123,6 +129,13 @@ if ($page < 10) {
 
 
 	</div>
+	<?php } else { ?>
+	<div class="container">
+		<h2>
+			<?php echo $header; ?>
+		</h2>
+	</div>
+	<?php } ?>
 </body>
 
 </html>

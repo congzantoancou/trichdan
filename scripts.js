@@ -40,7 +40,7 @@ function showLeft(){
     });
     $('.right-part').addClass('hidden');
     $('.left-part').removeClass('hidden');
-    $('.left-part').css({ 'right': '', 'left': '-400px' }).animate({left: '250px'}, 200);
+    $('.left-part').css({ 'right': '', 'left': '-500px' }).animate({left: '0'}, 200);
 }
 
 function showRight(){
@@ -50,7 +50,7 @@ function showRight(){
 
     $('.left-part').addClass('hidden');
     $('.right-part').removeClass('hidden');
-    $('.right-part').css({ 'right': '-400px', 'left': '' }).animate({right: '250px'}, 200);
+    $('.right-part').css({ 'right': '-500px', 'left': '' }).animate({right: '0'}, 200);
 }
 
 function showFull() {
