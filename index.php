@@ -28,7 +28,7 @@ if ($page > 0) {
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<title>Tự Điển Chữ Nôm Trích Dẫn - Lookup Tool</title>
+	<title>Trang <?php echo $page ?> - Tự Điển Chữ Nôm Trích Dẫn - Lookup Tool</title>
 	<link rel="stylesheet" href="bootstrap-3.3.7-dist/bootstrap-3.3.7-dist/css/bootstrap.min.css">
 	<link rel="stylesheet" href="styles.css">
 	<link href="https://fonts.googleapis.com/css?family=Bungee+Shade&display=swap" rel="stylesheet">
@@ -52,7 +52,7 @@ if ($page > 0) {
 					<a href="#">Page 1</a>
 				</li>
 				<li>
-					<a href="#">Page 2</a>
+					<a href="about">About</a>
 				</li>
 			</ul>
 			<form class="navbar-form navbar-left" method="get" action="index">
@@ -63,7 +63,7 @@ if ($page > 0) {
 			</form>
 			<ul class="nav navbar-nav navbar-right">
 				<li>
-					<a href="add-char">
+					<a href="#">
 						<span class="glyphicon glyphicon-plus-sign"></span> Add char</a>
 				</li>
 				<li>
@@ -115,8 +115,8 @@ if ($page > 0) {
 			 alt="Từ điển chữ Nôm trích dẫn trang <?php echo $page ?>" />
 		</div>
 
-		<div class="panel left-side vertical-text">LEFT</div>
-		<div class="panel right-side vertical-text">RIGHT</div>
+		<div class="panel left-side vertical-text">TRÁI</div>
+		<div class="panel right-side vertical-text">PHẢI</div>
 
 		<div class="img side-crop left-part center hidden">
 			<img src="http://vietnamtudien.org/chunom-trichdan/tr<?php echo $page ?>.png"

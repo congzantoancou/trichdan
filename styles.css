@@ -24,10 +24,10 @@
 
 .panel {
     position: fixed;
-    top: 52px;
-    background: rgba(255, 255, 255, .8);
-    padding: 0px 26px;
-    height: 100%;
+    top: 62px;
+    background: rgba(255, 255, 255, .5);
+    padding: 0px 24px;
+    height: 80%;
     cursor: pointer;
 }
 
