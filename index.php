@@ -1,9 +1,29 @@
 <?php 
-if (isset($_GET['page']))
-	$page = $_GET['page'];
-else $page = 0;
+include_once('Data.php');
 
-if ($page < 10) {
+$page = 0;
+
+if (isset($_GET['keyword'])) {
+	$keyword = $_GET['keyword'];
+} else if (isset($_GET['page']))
+	$page = $_GET['page'];
+else $keyword = null;
+
+if (isset($keyword)) {
+	if (is_numeric($keyword)) {
+		// KEYWORD INPUTED IS NUMBER
+		$page = $keyword;	
+	} else {
+		// KEYWORD INPUTED IS A WORD
+		$objectData = new Data();
+		$row = $objectData->getRow($keyword);
+		//var_dump($row);
+		$string_page = $row['page'];
+		$string_page = substr($string_page, 2, 4);
+	}
+}
+
+if ($page > 0 && $page < 10) {
 	$page = '000' . $page;
 } else if ($page < 100) {
 	$page = '00' . $page;
@@ -11,13 +31,19 @@ if ($page < 10) {
 	$page = '0' . $page;
 }
 
-$header = null;
+if (isset($string_page)) {
+	$page = $string_page;
+}
+
 if ($page > 0) {
 	$header = 'Đang hiển thị trang <span class="page">'.$page.'</span>';
+	$title = 'Trang ' . $page;
 } else {
 	$header = 'Không tìm thấy trang';
+	$title = 'Không tìm thấy trang';
 }
 								
+
 
 ?>
 
@@ -28,7 +54,7 @@ if ($page > 0) {
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<title>Trang <?php echo $page ?> - Tự Điển Chữ Nôm Trích Dẫn - Lookup Tool</title>
+	<title><?php echo $title ?> - Tự Điển Chữ Nôm Trích Dẫn - Lookup Tool</title>
 	<link rel="stylesheet" href="bootstrap-3.3.7-dist/bootstrap-3.3.7-dist/css/bootstrap.min.css">
 	<link rel="stylesheet" href="styles.css">
 	<link href="https://fonts.googleapis.com/css?family=Bungee+Shade&display=swap" rel="stylesheet">
@@ -49,7 +75,7 @@ if ($page > 0) {
 					<a href="#">Home</a>
 				</li>
 				<li>
-					<a href="#">Page 1</a>
+					<a href="words">Search by words</a>
 				</li>
 				<li>
 					<a href="about">About</a>
@@ -57,7 +83,7 @@ if ($page > 0) {
 			</ul>
 			<form class="navbar-form navbar-left" method="get" action="index">
 				<div class="form-group">
-					<input name="page" type="text" class="form-control" placeholder="Input number of page">
+					<input name="keyword" type="text" class="form-control" placeholder="Input keyword or page">
 				</div>
 				<button type="submit" class="btn btn-default">Search</button>
 			</form>
