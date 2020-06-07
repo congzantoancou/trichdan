@@ -1,7 +1,8 @@
-<?php 
+<?php
 include_once('Data.php');
 
 $page = 0;
+$MAX_PAGE = 1498;
 
 if (isset($_GET['keyword'])) {
 	$keyword = $_GET['keyword'];
@@ -12,7 +13,7 @@ else $keyword = null;
 if (isset($keyword)) {
 	if (is_numeric($keyword)) {
 		// KEYWORD INPUTED IS NUMBER
-		$page = $keyword;	
+		$page = $keyword;
 	} else {
 		// KEYWORD INPUTED IS A WORD
 		$objectData = new Data();
@@ -35,14 +36,19 @@ if (isset($string_page)) {
 	$page = $string_page;
 }
 
-if ($page > 0) {
-	$header = 'Đang hiển thị trang <span class="page">'.$page.'</span>';
+if ($page > 0 && $page <= $MAX_PAGE) {
+	$header = 'Đang hiển thị trang <span class="page">' . $page . '</span>';
 	$title = 'Trang ' . $page;
+} else if ($page == 0) {
+	$imgurl = "http://vietnamtudien.org/chunom-trichdan/tdcntd-biatruoc.jpg";
+	$title = 'Trang bìa';
+	$header = 'Bắt đầu bằng cách nhập số trang hoặc từ khóa vào khung tìm kiếm và nhấn phím Enter';
 } else {
 	$header = 'Không tìm thấy trang';
 	$title = 'Không tìm thấy trang';
+	$imgurl = 'https://learn.getgrav.org/user/pages/11.troubleshooting/01.page-not-found/error-404.png';
 }
-								
+
 
 
 ?>
@@ -65,103 +71,125 @@ if ($page > 0) {
 </head>
 
 <body>
-	<nav class="navbar navbar-inverse">
-		<div class="container-fluid">
-			<div class="navbar-header">
-				<a class="navbar-brand" href="index.php">WebSiteName</a>
-			</div>
-			<ul class="nav navbar-nav">
-				<li class="active">
-					<a href="#">Home</a>
-				</li>
-				<li>
-					<a href="words">Search by words</a>
-				</li>
-				<li>
-					<a href="about">About</a>
-				</li>
-			</ul>
-			<form class="navbar-form navbar-left" method="get" action="index">
-				<div class="form-group">
-					<input name="keyword" type="text" class="form-control" placeholder="Input keyword or page">
+	<div class="page-container">
+		<nav class="navbar navbar-inverse">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<a class="navbar-brand" href="index.php">WebSiteName</a>
 				</div>
-				<button type="submit" class="btn btn-default">Search</button>
-			</form>
-			<ul class="nav navbar-nav navbar-right">
-				<li>
-					<a href="#">
-						<span class="glyphicon glyphicon-plus-sign"></span> Add char</a>
-				</li>
-				<li>
-					<a href="#">
-						<span class="glyphicon glyphicon-user"></span> Sign Up</a>
-				</li>
-				<li>
-					<a href="#">
-						<span class="glyphicon glyphicon-log-in"></span> Login</a>
-				</li>
-			</ul>
-		</div>
-	</nav>
-
-	<?php if ($page > 0) { ?>
-	<div class="main">
-		<div class="page-info">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-6">
-						<div class="center">
-							<h2>
-								<?php echo $header; ?>
-							</h2>
-						</div>
+				<ul class="nav navbar-nav">
+					<li class="active">
+						<a href="#">Home</a>
+					</li>
+					<li>
+						<a href="words">Search by words</a>
+					</li>
+					<li>
+						<a href="about">About</a>
+					</li>
+				</ul>
+				<form class="navbar-form navbar-left" method="get" action="index">
+					<div class="form-group">
+						<input name="keyword" type="text" class="form-control" placeholder="Input keyword or page">
 					</div>
-					<div class="col-md-6">
-						<div class="change-page center">
-							<div class="row">
-								<div class="col-md-6">
-									<a class="btn btn-primary" href="index?page=<?php echo $page - 1 ?>">
-										<div class="icon">⇦</div>
-									</a>
+					<button type="submit" class="btn btn-default">Search</button>
+				</form>
+				<ul class="nav navbar-nav navbar-right">
+					<li>
+						<a href="#">
+							<span class="glyphicon glyphicon-plus-sign"></span> Add char</a>
+					</li>
+					<li>
+						<a href="#">
+							<span class="glyphicon glyphicon-user"></span> Sign Up</a>
+					</li>
+					<li>
+						<a href="#">
+							<span class="glyphicon glyphicon-log-in"></span> Login</a>
+					</li>
+				</ul>
+			</div>
+		</nav>
+		<div class="main">
+			<?php if ($page > 0 && $page <= $MAX_PAGE) { ?>
+
+				<div class="page-info">
+					<div class="container">
+						<div class="row">
+							<div class="col-md-6">
+								<div class="center">
+									<h2>
+										<?php echo $header; ?>
+									</h2>
 								</div>
-								<div class="col-md-6">
-									<a class="btn btn-primary" href="index?page=<?php echo $page + 1 ?>">
-										<div class="icon">⇨</div>
-									</a>
+							</div>
+							<div class="col-md-6">
+								<div class="change-page center">
+									<div class="row">
+										<div class="col-md-6">
+											<a class="btn btn-primary" href="index?page=<?php echo $page - 1 ?>">
+												<div class="icon">⇦</div>
+											</a>
+										</div>
+										<div class="col-md-6">
+											<a class="btn btn-primary" href="index?page=<?php echo $page + 1 ?>">
+												<div class="icon">⇨</div>
+											</a>
+										</div>
+									</div>
 								</div>
 							</div>
 						</div>
 					</div>
+
+
+
 				</div>
-			</div>
+				<div class="img full-image">
+					<img class="img-responsive center" src="http://vietnamtudien.org/chunom-trichdan/tr<?php echo $page ?>.png" alt="Tự điển Chữ Nôm Trích dẫn trang <?php echo $page ?>" />
+				</div>
+
+				<div class="panel left-side vertical-text">TRÁI</div>
+				<div class="panel right-side vertical-text">PHẢI</div>
+
+				<div class="img side-crop left-part center hidden">
+					<img src="http://vietnamtudien.org/chunom-trichdan/tr<?php echo $page ?>.png" alt="Tự điển Chữ Nôm Trích dẫn nửa trang <?php echo $page ?>">
+				</div>
+				<div class="img side-crop right-part right-crop center hidden">
+					<img src="http://vietnamtudien.org/chunom-trichdan/tr<?php echo $page ?>.png" alt="Tự điển Chữ Nôm Trích dẫn nửa trang <?php echo $page ?>">
+				</div>
+
+
+			<?php } else if ($page == 0) { ?>
+				<div class="container">
+					<h2>
+						<?php echo $header; ?>
+					</h2>
+					<img class="center origin" src="<?php echo $imgurl ?>" alt="Trang bìa Tự điển Chữ Nôm Trích dẫn">
+				</div>
+			<?php } else { ?>
+				<div class="container">
+					<h2>
+						<?php echo $header; ?>
+					</h2>
+					<img class="center origin" src="<?php echo $imgurl ?>" alt="Không tìm thấy">
+				</div>
+			<?php } ?>
 		</div>
-
-		<div class="img full-image">
-			<img class="img-responsive center" src="http://vietnamtudien.org/chunom-trichdan/tr<?php echo $page ?>.png"
-			 alt="Từ điển chữ Nôm trích dẫn trang <?php echo $page ?>" />
-		</div>
-
-		<div class="panel left-side vertical-text">TRÁI</div>
-		<div class="panel right-side vertical-text">PHẢI</div>
-
-		<div class="img side-crop left-part center hidden">
-			<img src="http://vietnamtudien.org/chunom-trichdan/tr<?php echo $page ?>.png"
-			 alt="Từ điển chữ Nôm trích dẫn nửa trang <?php echo $page ?>">
-		</div>
-		<div class="img side-crop right-part right-crop center hidden">
-			<img src="http://vietnamtudien.org/chunom-trichdan/tr<?php echo $page ?>.png"
-			 alt="Từ điển chữ Nôm trích dẫn nửa trang <?php echo $page ?>">
-		</div>
-
-
+		<?php if ($page == 0 or $page > $MAX_PAGE) { ?>
+			<footer>
+				<div class="footer">
+					<span>
+						&copy Fiong 2018 |
+					</span>
+					<span>
+						Trang nguồn (Đặng Thế Kiệt):
+						<a href="http://vietnamtudien.org/chunom-trichdan/">vietnamtudien.org/chunom_trichdan</a>
+					</span>
+				</div>
+			</footer>
+		<?php } ?>
 	</div>
-	<?php } else { ?>
-	<div class="container">
-		<h2>
-			<?php echo $header; ?>
-		</h2>
-	</div>
-	<?php } ?>
 </body>
 
 </html>

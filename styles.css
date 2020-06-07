@@ -1,3 +1,7 @@
+.navbar {
+    border-radius: 0;
+}
+
 .page-info .btn {
     width: 100%;
 }
@@ -16,11 +20,27 @@
     color: royalblue;
 }
 
-.side-crop { max-width: 60%; overflow: hidden;}
-.side-crop img { max-width: initial; /* Maybe optional. See note below */ }
-.right-crop { direction: rtl;}
-.margin-left { margin-left: 15%;}
-.margin-right {margin-right: 15%;}
+.side-crop {
+    max-width: 60%;
+    overflow: hidden;
+}
+
+.side-crop img {
+    max-width: initial;
+    /* Maybe optional. See note below */
+}
+
+.right-crop {
+    direction: rtl;
+}
+
+.margin-left {
+    margin-left: 15%;
+}
+
+.margin-right {
+    margin-right: 15%;
+}
 
 .panel {
     position: fixed;
@@ -54,23 +74,20 @@
     font-feature-settings: "vkrn", "vpal";
     font-size: 2em;
     text-align: center;
-  }
+}
 
 .img {
-    position:absolute;
+    position: absolute;
     right: 0;
     left: 0;
 }
 
-
-
-
 body {
     background: url('https://images.unsplash.com/photo-1486723312829-f32b4a25211b?dpr=2&auto=format&fit=crop&w=1500&h=1000&q=80&cs=tinysrgb&crop=&bg=') no-repeat center center fixed;
     background-size: cover;
-  }
-  
-  .blur {
+}
+
+.blur {
     background: url('https://images.unsplash.com/photo-1486723312829-f32b4a25211b?dpr=2&auto=format&fit=crop&w=1500&h=1000&q=80&cs=tinysrgb&crop=&bg=') no-repeat center center fixed;
     background-size: cover;
     overflow: hidden;
@@ -82,34 +99,34 @@ body {
     left: -50px;
     right: -50px;
     bottom: -50px;
-  }
-  
-  .widget {
+}
+
+.widget {
     border-top: 2px solid rgba(255, 255, 255, .5);
     border-bottom: 2px solid rgba(255, 255, 255, .5);
     height: 200px;
     width: 100%;
     overflow: hidden;
-  }
-  
-  .center-midle {
+}
+
+.center-midle {
     position: absolute;
     margin: auto;
     top: 0;
     bottom: 0;
     left: 0;
     right: 0;
-  }
-  
-  
-  /*  NOT REQUIRED  */
-  
-  .text {
+}
+
+
+/*  NOT REQUIRED  */
+
+.text {
     height: 200px;
     width: 340px;
-  }
-  
-  .text h1 {
+}
+
+.text h1 {
     text-align: center;
     text-shadow: 1px 1px rgba(0, 0, 0, .1);
     color: #ffffff;
@@ -117,9 +134,9 @@ body {
     font-family: 'Lora', serif;
     font-weight: 700;
     font-size: 38px;
-  }
-  
-  .text p {
+}
+
+.text p {
     text-align: center;
     color: #ffffff;
     text-shadow: 1px 1px rgba(0, 0, 0, .1);
@@ -127,4 +144,35 @@ body {
     font-family: 'Lato', serif;
     font-weight: 400;
     font-size: 22px;
-  }
+}
+
+body,
+.page-container {
+    position: relative;
+    min-height: 100vh;
+}
+
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.main {
+    padding-bottom: 60px;
+}
+
+.origin {
+    max-width: 100%;
+    height: auto;
+}
+
+footer {
+    background-color: rgb(47, 54, 88);
+    padding: 20px;
+    text-align: center;
+    color: white;
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+}
